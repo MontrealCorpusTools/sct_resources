@@ -3,7 +3,7 @@ import re
 import urllib.request, urllib.parse
 
 """
-stress information from Wiktionary
+stress information from Wiktionary (word list gotten from https://petscan.wmflabs.org/)
 
 All info from Subtlex-PL (http://crr.ugent.be/programs-data/subtitle-frequencies/subtlex-pl)
 
@@ -53,6 +53,7 @@ def get_words():
 	vowelregex = re.compile('[aɛɛ̃iɨɔɔ̃u]')
 	with open('words.txt') as f2:
 		lines = f2.readlines()
+	f3 = open("stresses.txt", 'w')
 	for i,line in enumerate(lines):
 		html = getHTML('https://en.wiktionary.org/wiki/{}#Polish'.format(line.strip().replace(' ','_')))
 		
@@ -73,8 +74,9 @@ def get_words():
 					stresspattern+='0'
 			
 			words[line] = stresspattern
+			f3.write("{},{}".format(line,stresspattern))
 			if i%10 == 0:
 				print("{} percent done".format((i/10949)*100))
-
+	f3.close()
 parsefile('subtlex-pl.csv', 'PolishEnrichmentData.csv')
 
