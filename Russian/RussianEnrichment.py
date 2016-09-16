@@ -20,6 +20,9 @@ def parseFile(path,writepath):
 	with open(path, errors='ignore') as f1:
 		lines = f1.readlines()
 
+
+
+
 	f2 = open(writepath,'w') 
 	f2cw = csv.writer(f2)
 	f2cw.writerow(['word','frequency','word_type'])
@@ -33,8 +36,6 @@ def parseFile(path,writepath):
 		if pos in ['pr','conj','spro']:
 			word_type='Function'
 		f2cw.writerow([string,freq,word_type])
-
-
 
 
 parseFile('freqrnc2011.csv','RussianEnrichmentData.csv')
