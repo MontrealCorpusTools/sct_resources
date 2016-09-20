@@ -11,27 +11,27 @@ def start_processes():
 		lines = f2.readlines()
 	
 
-#	q1 = Process(target = get_words, args = (lines[0:math.floor(10949/4)], 0))
+	q1 = Process(target = get_words, args = (lines[0:math.floor(10949/4)], 0))
 	
 
-#	q2 = Process(target = get_words, args = (lines[math.ceil(10949/4):math.floor(2*10949/4)], 1)) 
+	q2 = Process(target = get_words, args = (lines[math.ceil(10949/4):math.floor(2*10949/4)], 1)) 
 	
 
-#	q3 = Process(target = get_words, args = (lines[math.ceil(2*10949/4):math.floor(3*10949/4)], 2))
+	q3 = Process(target = get_words, args = (lines[math.ceil(2*10949/4):math.floor(3*10949/4)], 2))
 	
 
 	q4 = Process(target = get_words, args = (lines[math.ceil(3*10949/4):], 3))
 	
 
 
-#	q1.start()
-#	q2.start()
-#	q3.start()
+	q1.start()
+	q2.start()
+	q3.start()
 	q4.start()
 
-#	q1.join()
-#	q2.join()
-#	q3.join()
+	q1.join()
+	q2.join()
+	q3.join()
 	q4.join()
 
 def getHTML(page):
@@ -65,8 +65,6 @@ def get_words(lines, writenum=0):
 			just_vs = re.sub('[^ˌˈaɛɛ̃iɨɔɔ̃u]',"",ipa)
 			#get just vowels and stress marks
 			stresspattern = ""
-			if line == "komórkową":
-				print(just_vs)
 			viter = iter(just_vs)
 			for seg in viter:
 				#for each vowel or stressmark
